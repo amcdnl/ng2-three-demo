@@ -5,7 +5,12 @@ import './app.scss';
   selector: 'app',
   template: `
     <div>
-      <h1>Hello</h1>
+      <header>
+        <h1>ng2-three</h1>
+      </header>
+      <main>
+        <three></three>
+      </main>
     </div>
   `
 })

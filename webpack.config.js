@@ -100,6 +100,10 @@ function webpackConfig(options = {}) {
         'APP_VERSION': VERSION
       }),
 
+      new webpack.ProvidePlugin({
+        'THREE': 'three'
+      }),
+      
       new WebpackNotifierPlugin({
         excludeWarnings: true
       }),

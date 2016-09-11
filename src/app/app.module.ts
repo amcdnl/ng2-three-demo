@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 import { App } from './app.component';
+import { ThreeModule } from './three/three.module';
 
 @NgModule({
   declarations: [App],
-  imports: [BrowserModule],
+  imports: [BrowserModule, ThreeModule],
   bootstrap: [App]
 })
 export class AppModule {
