@@ -2,13 +2,17 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
-import { App } from './app.component';
+import { AppComponent } from './app.component';
+import { VoiceService } from './services/voice.service';
+import { MusicService } from './services/music.service';
+
 import { ThreeModule } from '../three/three.module';
 
 @NgModule({
-  declarations: [App],
+  declarations: [AppComponent],
   imports: [BrowserModule, ThreeModule],
-  bootstrap: [App]
+  providers: [VoiceService, MusicService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 

@@ -10,3 +10,5 @@ interface ErrorStackTraceLimit {
 }
 
 interface ErrorConstructor extends ErrorStackTraceLimit {}
+
+declare module 'annyang';
