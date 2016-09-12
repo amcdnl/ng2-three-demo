@@ -1,10 +1,10 @@
 import { Directive, Input } from '@angular/core';
 import * as THREE from 'three';
 
-@Directive({ selector: 'three-camera' })
-export class CameraComponent {
+@Directive({ selector: 'three-perspective-camera' })
+export class PerspectiveCameraComponent {
 
-  @Input() scene: THREE.Scene;
+  @Input() positions = [0, 0, 0];
 
   camera: THREE.PerspectiveCamera;
 
@@ -16,8 +16,14 @@ export class CameraComponent {
       10000 // Far plane
     );
 
-    this.camera.position.set(-15, 10, 10);
-    this.camera.lookAt(this.scene.position);
+    this.camera.position.set(
+      this.positions[0],
+      this.positions[1],
+      this.positions[2]);
+  }
+
+  lookAt(scene) {
+    this.camera.lookAt(scene.position);
   }
 
 }

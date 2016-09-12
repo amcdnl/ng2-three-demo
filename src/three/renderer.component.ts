@@ -5,9 +5,9 @@ import { SceneComponent } from './scene.component';
 
 @Directive({ selector: 'three-renderer' })
 export class RendererComponent {
-  
-  @Input() rHeight: number = 800;
-  @Input() rWidth: number = 800;
+
+  @Input() height: number = 800;
+  @Input() width: number = 800;
 
   @ContentChild(SceneComponent) sceneComp: SceneComponent;
 
@@ -17,13 +17,13 @@ export class RendererComponent {
   }
 
   ngOnInit() {
-    this.renderer = new THREE.WebGLRenderer({ 
-      alpha: true 
+    this.renderer = new THREE.WebGLRenderer({
+      alpha: true
     });
   }
 
   ngAfterContentInit() {
-    this.renderer.setSize(this.rHeight, this.rWidth);
+    this.renderer.setSize(this.height, this.width);
     this.element.nativeElement.appendChild(this.renderer.domElement);
 
     this.renderer.setClearColor(0x000000, 0);
