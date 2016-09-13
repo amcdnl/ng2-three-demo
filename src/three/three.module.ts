@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// Basic
 import { ThreeComponent } from './three.component';
 import { RendererComponent } from './renderer.component';
 import { SceneComponent } from './scene.component';
 
-// Cameras
 import { PerspectiveCameraComponent } from './cameras/perspective-camera.component';
-
-// Lights
 import { PointLightComponent } from './lights/point-light.component';
+import { VRControlsComponent } from './controls/vr.component';
+import { SphereComponent } from './objects/sphere.component';
+import { TextureComponent } from './objects/texture.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +18,10 @@ import { PointLightComponent } from './lights/point-light.component';
     RendererComponent,
     SceneComponent,
     PerspectiveCameraComponent,
-    PointLightComponent
+    PointLightComponent,
+    SphereComponent,
+    VRControlsComponent,
+    TextureComponent
   ],
   imports: [BrowserModule],
   exports: [ThreeComponent]

@@ -19,6 +19,16 @@ header {
     margin: 0;
     display: inline-block;
     font-size: 22px;
+
+    small {
+      color: #999;
+      font-size: 11px;
+      font-style: italic;
+    }
+  }
+
+  nav {
+    float: right;
   }
 }
 

@@ -64,10 +64,12 @@ function webpackConfig(options = {}) {
         test: /\.js$/,
         loader: 'source-map',
         exclude: /(node_modules)/
-      }, {
+      }
+      /* {
         test: /\.ts$/,
         loader: 'tslint'
-      }],
+      } */
+      ],
       loaders: [{
         test: /\.ts$/,
         loaders: [
@@ -103,7 +105,7 @@ function webpackConfig(options = {}) {
       new webpack.ProvidePlugin({
         'THREE': 'three'
       }),
-      
+
       new WebpackNotifierPlugin({
         excludeWarnings: true
       }),

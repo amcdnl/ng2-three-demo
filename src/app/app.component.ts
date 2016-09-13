@@ -9,25 +9,40 @@ import './app.scss';
   template: `
     <div>
       <header>
-        <h1>ng2-three-vr-demo</h1>
-        <span>{{feedback}}</span>
-        <button
-          type="button"
-          (click)="musicSvc.play('Brantley Gilbert')">
-          Play Brantley Gilbert
-        </button>
-        <button
-          type="button"
-          *ngIf="musicSvc.playing"
-          (click)="musicSvc.stop()">
-          Stop
-        </button>
+        <h1>
+          ng2-three-vr-demo
+          <small>{{feedback}}</small>
+        </h1>
+        <nav>
+          <button
+            type="button"
+            (click)="musicSvc.search('Brantley Gilbert')">
+            Play
+          </button>
+          <button
+            type="button"
+            *ngIf="musicSvc.playing"
+            (click)="musicSvc.stop()">
+            Stop
+          </button>
+          <button
+            type="button"
+            (click)="isFullScreen = !isFullScreen">
+            Full Screen
+          </button>
+          <button
+            type="button"
+            (click)="isVRMode = !isVRMode">
+            VR Mode
+          </button>
+        </nav>
       </header>
       <main>
         <three
-          [height]="height"
-          [width]="width"
-          [ngModel]="data">
+          [isVRMode]="isVRMode"
+          [isFullScreen]="isFullScreen"
+          [ngModel]="audioData"
+          [image]="image">
         </three>
       </main>
     </div>
@@ -35,24 +50,22 @@ import './app.scss';
 })
 export class AppComponent {
 
+  image: any;
+  audioData: any;
+  isFullScreen: boolean = false;
+  isVRMode: boolean = false;
   feedback: string = '';
-
-  height: number = window.innerHeight - 50;
-  width: number = window.innerWidth;
-
-  data: any[] = [
-    { name: 'bar' },
-    { name: 'cat' }
-  ];
 
   constructor(private voiceSvc: VoiceService, private musicSvc: MusicService) {
     this.voiceSvc.onCommand.subscribe((event) => {
-      if(event.type === 'play') this.musicSvc.play(event.value);
+      if(event.type === 'play') this.musicSvc.search(event.value);
       if(event.type === 'stop') this.musicSvc.stop();
     });
 
-    this.musicSvc.onPlay.subscribe(({ name, artist, album }) => {
-      this.feedback = `Playing ${name} by ${artist}`;
+    this.musicSvc.onPlay.subscribe(({ track, audio }) => {
+      this.feedback = `Playing ${track.name} by ${track.artist}`;
+      this.audioData = audio;
+      this.image = track.album;
     });
   }
 
