@@ -13,7 +13,7 @@ import { Input, Component, HostListener } from '@angular/core';
         <three-perspective-camera
           [height]="height"
           [width]="width"
-          [positions]="[-600, 0, 0]">
+          [positions]="[-50, 0, 0]">
         </three-perspective-camera>
 
         <three-vr-controls
@@ -48,9 +48,8 @@ export class ThreeComponent {
   }
 
   ngOnChanges(changes) {
-    console.log('changes', changes)
-
     if(changes.ngModel && changes.ngModel.currentValue) {
+      console.log('changes', changes)
     }
   }
 

@@ -17,7 +17,8 @@ export class RendererComponent {
   @ContentChild(VRControlsComponent) vrComponent: VRControlsComponent;
 
   renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({
-    alpha: true
+    alpha: true,
+    antialias: true
   });
 
   get scene() {
@@ -50,7 +51,7 @@ export class RendererComponent {
     this.renderer.setPixelRatio(Math.floor(window.devicePixelRatio));
 
     if(this.vrComponent) {
-      // this.vrComponent.setupControls(this.camera, this.renderer);
+      this.vrComponent.setupControls(this.camera, this.renderer);
     }
 
     this.render();
@@ -58,11 +59,11 @@ export class RendererComponent {
 
   render() {
     if(this.vrComponent) {
-      // this.vrComponent.updateControls(this.scene, this.camera);
+      this.vrComponent.updateControls(this.scene, this.camera);
     }
 
     this.renderer.render(this.scene, this.camera);
-    // requestAnimationFrame(() => this.render());
+    requestAnimationFrame(() => this.render());
   }
 
 }

@@ -21,24 +21,16 @@ export class SceneComponent {
   }
 
   ngAfterContentInit() {
-    //this.cameraComp.lookAt(this.scene);
+    this.camera.lookAt(this.scene.position);
+    this.scene.add(this.camera);
 
     this.lightComps.forEach((lightComp) => {
-      // this.scene.add(lightComp.light);
+      this.scene.add(lightComp.light);
     });
-
-    let geometry = new THREE.BoxGeometry(5, 5, 5);
-    let material = new THREE.MeshLambertMaterial({ color: 0xFF0000 });
-    let mesh = new THREE.Mesh(geometry, material);
-    this.scene.add(mesh);
 
     this.sphereComps.forEach((sphereComp) => {
-      // this.scene.add(sphereComp.object);
+      this.scene.add(sphereComp.object);
     });
-
-    let light = new THREE.PointLight(0xFFFF00);
-    light.position.set(10, 0, 10);
-    this.scene.add(light);
   }
 
 }

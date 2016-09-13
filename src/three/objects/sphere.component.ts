@@ -13,7 +13,6 @@ export class SphereComponent {
     let sphere = new THREE.Mesh(geometry, material);
 
     this.object = sphere;
-    // scene.add(sphere);
   }
 
 }

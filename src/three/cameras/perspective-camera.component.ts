@@ -8,23 +8,26 @@ export class PerspectiveCameraComponent {
   @Input() width: number;
   @Input() positions = [0, 0, 0];
 
+  viewAngle: number = 45;
+  near: number = 0.1;
+  far: number = 20000;
   camera: THREE.PerspectiveCamera;
+
+  get aspect(): number {
+    return this.height / this.width;
+  }
 
   ngOnInit() {
     this.camera = new THREE.PerspectiveCamera(
-      75,
-      this.width / this.height,
-      0.1,
-      10000);
+      this.viewAngle,
+      this.aspect,
+      this.near,
+      this.far);
 
     this.camera.position.set(
       this.positions[0],
       this.positions[1],
       this.positions[2]);
-  }
-
-  lookAt(scene) {
-    this.camera.lookAt(scene.position);
   }
 
   ngOnChanges(changes) {
