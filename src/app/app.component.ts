@@ -7,7 +7,7 @@ import './app.scss';
 @Component({
   selector: 'app',
   template: `
-    <div>
+    <main>
       <header>
         <h1>
           ng2-three-vr-demo
@@ -37,15 +37,13 @@ import './app.scss';
           </button>
         </nav>
       </header>
-      <main>
-        <three
-          [isVRMode]="isVRMode"
-          [isFullScreen]="isFullScreen"
-          [ngModel]="audioData"
-          [image]="image">
-        </three>
-      </main>
-    </div>
+      <three
+        [isVRMode]="isVRMode"
+        [isFullScreen]="isFullScreen"
+        [ngModel]="audioData"
+        [image]="image">
+      </three>
+    </main>
   `
 })
 export class AppComponent {

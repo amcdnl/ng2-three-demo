@@ -8,6 +8,7 @@ import { Input, Component, HostListener } from '@angular/core';
       [isVRMode]="isVRMode"
       [height]="height"
       [width]="width">
+
       <three-scene>
         <three-perspective-camera
           [height]="height"
@@ -23,9 +24,11 @@ import { Input, Component, HostListener } from '@angular/core';
         <three-point-light></three-point-light>
 
         <three-sphere></three-sphere>
+
         <three-texture
           [texture]="image">
         </three-texture>
+
       </three-scene>
     </three-renderer>
   `
@@ -35,10 +38,14 @@ export class ThreeComponent {
   @Input() ngModel: any;
   @Input() image: any;
 
-  @Input() height: number = window.innerHeight - 50;
-  @Input() width: number = window.innerWidth;
+  @Input() height: number;
+  @Input() width: number;
   @Input() isFullScreen: boolean = false;
   @Input() isVRMode: boolean = false;
+
+  ngOnInit() {
+    this.resetWidthHeight();
+  }
 
   ngOnChanges(changes) {
     console.log('changes', changes)
@@ -50,7 +57,7 @@ export class ThreeComponent {
   @HostListener('window.resize')
   @HostListener('window.vrdisplaypresentchange')
   resetWidthHeight() {
-    this.height = window.innerHeight - 50;
+    this.height = window.innerHeight;
     this.width = window.innerWidth;
   }
 

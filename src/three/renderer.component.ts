@@ -16,7 +16,9 @@ export class RendererComponent {
   @ContentChild(SceneComponent) sceneComp: SceneComponent;
   @ContentChild(VRControlsComponent) vrComponent: VRControlsComponent;
 
-  renderer: THREE.WebGLRenderer;
+  renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({
+    alpha: true
+  });
 
   get scene() {
     return this.sceneComp.scene;
@@ -27,12 +29,6 @@ export class RendererComponent {
   }
 
   constructor(private element: ElementRef) {
-  }
-
-  ngOnInit() {
-    this.renderer = new THREE.WebGLRenderer({
-      alpha: true
-    });
   }
 
   ngOnChanges(changes) {
@@ -47,14 +43,14 @@ export class RendererComponent {
   }
 
   ngAfterContentInit() {
-    this.renderer.setSize(this.height, this.width);
+    this.renderer.setSize(this.width, this.height);
+    this.element.nativeElement.appendChild(this.renderer.domElement);
+
     this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(Math.floor(window.devicePixelRatio));
 
-    this.element.nativeElement.appendChild(this.renderer.domElement);
-
     if(this.vrComponent) {
-      this.vrComponent.setupControls(this.camera, this.renderer);
+      // this.vrComponent.setupControls(this.camera, this.renderer);
     }
 
     this.render();
@@ -62,11 +58,11 @@ export class RendererComponent {
 
   render() {
     if(this.vrComponent) {
-      this.vrComponent.updateControls(this.scene, this.camera);
+      // this.vrComponent.updateControls(this.scene, this.camera);
     }
 
     this.renderer.render(this.scene, this.camera);
-    requestAnimationFrame(() => this.render());
+    // requestAnimationFrame(() => this.render());
   }
 
 }

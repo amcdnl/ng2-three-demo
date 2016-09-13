@@ -13,7 +13,7 @@ export class PerspectiveCameraComponent {
   ngOnInit() {
     this.camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
+      this.width / this.height,
       0.1,
       10000);
 
