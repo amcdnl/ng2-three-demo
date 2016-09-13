@@ -2,7 +2,6 @@ body {
   padding: 0;
   margin: 0;
   font-size: .9em;
-  background: #1b1e27;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
@@ -12,13 +11,13 @@ button {
   display: inline-block;
   padding: .5em .8em;
   margin: .2em;
-  background: #12151d;
+  background: none;
   color: #fff;
   border: none;
 }
 
 header {
-  background: rgba(47,54,70,.60);
+  background: rgba(35, 35, 35, .50);
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
@@ -26,6 +25,7 @@ header {
   top: 20px;
   left: 20px;
   right: 20px;
+  z-index: 999;
 
   h1 {
     padding: 0;

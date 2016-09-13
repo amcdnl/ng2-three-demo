@@ -9,17 +9,21 @@ import { Input, Component, HostListener } from '@angular/core';
       [height]="height"
       [width]="width">
 
+      <three-orbit-controls>
+      </three-orbit-controls>
+
+      <three-vr-controls
+        *ngIf="isVRMode"
+        [height]="height"
+        [width]="width">
+      </three-vr-controls>
+
       <three-scene>
         <three-perspective-camera
           [height]="height"
           [width]="width"
           [positions]="[-50, 0, 0]">
         </three-perspective-camera>
-
-        <three-vr-controls
-          [height]="height"
-          [width]="width">
-        </three-vr-controls>
 
         <three-point-light></three-point-light>
 

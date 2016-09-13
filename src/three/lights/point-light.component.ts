@@ -5,7 +5,7 @@ import * as THREE from 'three';
 export class PointLightComponent {
 
   @Input() color: string = '#FFFF00';
-  @Input() position: number[] = [10, 0, 10];
+  @Input() position: number[] = [0, 250, 0];
 
   light: THREE.PointLight;
 

@@ -1,8 +1,9 @@
-import { Directive, ElementRef, Input, ContentChild } from '@angular/core';
+import { Directive, ElementRef, Input, ContentChild, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 
 import { SceneComponent } from './scene.component';
 import { VRControlsComponent } from './controls/vr.component';
+import { OrbitControlsComponent } from './controls/orbit.component';
 import { requestFullScreen } from './utils/fullscreen';
 
 @Directive({ selector: 'three-renderer' })
@@ -15,9 +16,10 @@ export class RendererComponent {
 
   @ContentChild(SceneComponent) sceneComp: SceneComponent;
   @ContentChild(VRControlsComponent) vrComponent: VRControlsComponent;
+  @ContentChild(OrbitControlsComponent) orbitComponent: OrbitControlsComponent;
 
   renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({
-    alpha: true,
+    // alpha: true,
     antialias: true
   });
 
@@ -47,8 +49,12 @@ export class RendererComponent {
     this.renderer.setSize(this.width, this.height);
     this.element.nativeElement.appendChild(this.renderer.domElement);
 
-    this.renderer.setClearColor(0x000000, 0);
+    // this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(Math.floor(window.devicePixelRatio));
+
+    if(this.orbitComponent) {
+      this.orbitComponent.setupControls(this.camera, this.renderer);
+    }
 
     if(this.vrComponent) {
       this.vrComponent.setupControls(this.camera, this.renderer);
@@ -60,6 +66,10 @@ export class RendererComponent {
   render() {
     if(this.vrComponent) {
       this.vrComponent.updateControls(this.scene, this.camera);
+    }
+
+    if(this.orbitComponent) {
+      this.orbitComponent.updateControls(this.scene, this.camera);
     }
 
     this.renderer.render(this.scene, this.camera);

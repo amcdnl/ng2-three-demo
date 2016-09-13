@@ -8,9 +8,9 @@ import { SceneComponent } from './scene.component';
 import { PerspectiveCameraComponent } from './cameras/perspective-camera.component';
 import { PointLightComponent } from './lights/point-light.component';
 import { VRControlsComponent } from './controls/vr.component';
+import { OrbitControlsComponent } from './controls/orbit.component';
 import { SphereComponent } from './objects/sphere.component';
 import { TextureComponent } from './objects/texture.component';
-
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { TextureComponent } from './objects/texture.component';
     PointLightComponent,
     SphereComponent,
     VRControlsComponent,
-    TextureComponent
+    TextureComponent,
+    OrbitControlsComponent
   ],
   imports: [BrowserModule],
   exports: [ThreeComponent]
