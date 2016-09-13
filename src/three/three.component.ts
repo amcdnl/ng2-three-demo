@@ -24,7 +24,6 @@ import { Input, Component, HostListener } from '@angular/core';
 
         <three-sphere></three-sphere>
         <three-texture
-          *ngIf="image"
           [texture]="image">
         </three-texture>
       </three-scene>

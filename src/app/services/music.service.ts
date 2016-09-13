@@ -29,6 +29,8 @@ export class MusicService {
 
     req.onreadystatechange = () => {
       if(req.readyState === XMLHttpRequest.DONE && req.status === 200) {
+        this.stop();
+        
         const response = JSON.parse(req.responseText);
         if (response.tracks.items.length) {
           const track = response.tracks.items[0];

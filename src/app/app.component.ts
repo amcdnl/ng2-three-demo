@@ -63,7 +63,7 @@ export class AppComponent {
     });
 
     this.musicSvc.onPlay.subscribe(({ track, audio }) => {
-      this.feedback = `Playing ${track.name} by ${track.artist}`;
+      this.feedback = `Playing "${track.name}" by ${track.artist}`;
       this.audioData = audio;
       this.image = track.album;
     });

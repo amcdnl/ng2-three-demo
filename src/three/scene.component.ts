@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { PerspectiveCameraComponent } from './cameras/perspective-camera.component';
 import { PointLightComponent } from './lights/point-light.component';
 import { SphereComponent } from './objects/sphere.component';
+import { TextureComponent } from './objects/texture.component';
 
 @Directive({ selector: 'three-scene' })
 export class SceneComponent {
@@ -11,6 +12,7 @@ export class SceneComponent {
   @ContentChild(PerspectiveCameraComponent) cameraComp: any;
   @ContentChildren(PointLightComponent) lightComps: any;
   @ContentChildren(SphereComponent) sphereComps: any;
+  // @ContentChildren(TextureComponent) textureComps: any;
 
   scene: THREE.Scene;
 
