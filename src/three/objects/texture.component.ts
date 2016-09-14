@@ -4,37 +4,48 @@ import * as THREE from 'three';
 @Directive({ selector: 'three-texture' })
 export class TextureComponent {
 
-  @Input() texture: string = 'https://i.scdn.co/image/7199df74bb15de17f72704c79d482851c0cf4c38';
+  @Input() texture: string;
   @Input() boxWidth: number = 5;
 
   object: THREE.Mesh;
-  loader = new THREE.TextureLoader();
+
+  objects = [];
+  manager = new THREE.LoadingManager();
 
   ngOnInit() {
+    let loader = new THREE.ImageLoader(this.manager);
+
     if(this.texture) {
-      this.loader.load(this.texture, this.onTextureLoaded.bind(this));
+      /*
+      let geometry = new THREE.BoxGeometry(
+        this.boxWidth,
+        this.boxWidth,
+        this.boxWidth);
+
+      loader.load(this.texture, this.createTexture(texture, material));
+      */
     }
   }
 
-  onTextureLoaded(texture) {
-    console.log('Loaded Texture', texture);
+  createTexture(texture, material) {
+    return function(image) {
+      texture.image = image;
+      texture.needsUpdate = true;
+    }
+  }
 
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(this.boxWidth, this.boxWidth);
+  attachScene(scene) {
+    this.manager.onLoad = () => {
+      /*
+      let material = new THREE.MeshBasicMaterial({
+        map: texture,
+        color: 0x01BE00,
+        side: THREE.BackSide
+      });
 
-    let geometry = new THREE.BoxGeometry(
-      this.boxWidth,
-      this.boxWidth,
-      this.boxWidth);
-
-    let material = new THREE.MeshBasicMaterial({
-      map: texture,
-      color: 0x01BE00,
-      side: THREE.BackSide
-    });
-
-    this.object = new THREE.Mesh(geometry, material);
+      this.object = new THREE.Mesh(geometry, material);
+      */
+    };
   }
 
 }

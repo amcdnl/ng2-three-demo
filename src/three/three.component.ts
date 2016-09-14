@@ -26,8 +26,8 @@ import { Input, Component, HostListener } from '@angular/core';
         </three-perspective-camera>
 
         <three-point-light></three-point-light>
-
         <three-sphere></three-sphere>
+        <three-skybox></three-skybox>
 
         <three-texture
           [texture]="image">
@@ -40,7 +40,7 @@ import { Input, Component, HostListener } from '@angular/core';
 export class ThreeComponent {
 
   @Input() ngModel: any;
-  @Input() image: any;
+  @Input() image: any = 'https://i.scdn.co/image/7199df74bb15de17f72704c79d482851c0cf4c38';
 
   @Input() height: number;
   @Input() width: number;

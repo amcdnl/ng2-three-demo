@@ -7,10 +7,10 @@ export class PointLightComponent {
   @Input() color: string = '#FFFF00';
   @Input() position: number[] = [0, 250, 0];
 
-  light: THREE.PointLight;
+  object: THREE.PointLight;
 
   ngOnInit() {
-    this.light = new THREE.PointLight(this.color);
+    this.object = new THREE.PointLight(this.color);
     this.setPosition(this.position);
   }
 
@@ -21,7 +21,7 @@ export class PointLightComponent {
   }
 
   setPosition(position) {
-    this.light.position.set(
+    this.object.position.set(
       position[0],
       position[1],
       position[2]);

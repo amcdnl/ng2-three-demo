@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  trigger,
+  transition,
+  animate,
+  style,
+  state
+} from '@angular/core';
 
 import { VoiceService } from './services/voice.service';
 import { MusicService } from './services/music.service';
@@ -8,35 +15,35 @@ import './app.scss';
   selector: 'app',
   template: `
     <main>
-      <header>
+      <header [@searchTransition]="feedback ? 'active' : 'inactive'">
         <h1>
-          ng2-three-vr-demo
-          <small>{{feedback}}</small>
+          <span *ngIf="!feedback">Say "Play Luke Bryan" to hear a song...</span>
+          <span *ngIf="feedback">{{feedback}}</span>
         </h1>
-        <nav>
-          <button
-            type="button"
-            (click)="musicSvc.search('Brantley Gilbert')">
-            Play
-          </button>
-          <button
-            type="button"
-            *ngIf="musicSvc.playing"
-            (click)="musicSvc.stop()">
-            Stop
-          </button>
-          <button
-            type="button"
-            (click)="isFullScreen = !isFullScreen">
-            Full Screen
-          </button>
-          <button
-            type="button"
-            (click)="isVRMode = !isVRMode">
-            VR Mode
-          </button>
-        </nav>
       </header>
+      <nav>
+        <button
+          type="button"
+          (click)="musicSvc.search('Luke Bryan')">
+          Play
+        </button>
+        <button
+          type="button"
+          *ngIf="musicSvc.playing"
+          (click)="musicSvc.stop()">
+          Stop
+        </button>
+        <button
+          type="button"
+          (click)="isFullScreen = !isFullScreen">
+          Full Screen
+        </button>
+        <button
+          type="button"
+          (click)="isVRMode = !isVRMode">
+          VR Mode
+        </button>
+      </nav>
       <three
         [isVRMode]="isVRMode"
         [isFullScreen]="isFullScreen"
@@ -44,7 +51,19 @@ import './app.scss';
         [image]="image">
       </three>
     </main>
-  `
+  `,
+  animations: [
+    trigger('searchTransition', [
+      state('active', style({ top: '10%' })),
+      state('inactive', style({ top: '50%' })),
+      transition('* => active', [
+        animate('200ms ease-in')
+      ]),
+      transition('* => inactive', [
+        animate('200ms ease-out')
+      ])
+    ])
+  ]
 })
 export class AppComponent {
 

@@ -1,10 +1,11 @@
 body {
   padding: 0;
   margin: 0;
-  font-size: .9em;
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
   overflow: hidden;
+  font-size: 0.7em;
+  font-family: 'Open Sans';
 }
 
 button {
@@ -14,24 +15,33 @@ button {
   background: none;
   color: #fff;
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 header {
-  background: rgba(35, 35, 35, .50);
+  background: rgba(22, 42, 60, 0.71);
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
   position: absolute;
   top: 20px;
-  left: 20px;
-  right: 20px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
   z-index: 999;
+  border-radius: 5px;
+  text-align: center;
 
   h1 {
     padding: 0;
     margin: 0;
     display: inline-block;
     font-size: 22px;
+    font-weight: 100;
+    white-space: nowrap;
 
     small {
       color: #999;
@@ -39,10 +49,13 @@ header {
       font-style: italic;
     }
   }
+}
 
-  nav {
-    float: right;
-  }
+nav {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
 }
 
 main {

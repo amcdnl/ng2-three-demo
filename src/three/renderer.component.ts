@@ -19,7 +19,6 @@ export class RendererComponent {
   @ContentChild(OrbitControlsComponent) orbitComponent: OrbitControlsComponent;
 
   renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({
-    // alpha: true,
     antialias: true
   });
 
@@ -48,8 +47,6 @@ export class RendererComponent {
   ngAfterContentInit() {
     this.renderer.setSize(this.width, this.height);
     this.element.nativeElement.appendChild(this.renderer.domElement);
-
-    // this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(Math.floor(window.devicePixelRatio));
 
     if(this.orbitComponent) {
@@ -72,7 +69,9 @@ export class RendererComponent {
       this.orbitComponent.updateControls(this.scene, this.camera);
     }
 
+    this.camera.lookAt(this.scene.position);
     this.renderer.render(this.scene, this.camera);
+
     requestAnimationFrame(() => this.render());
   }
 

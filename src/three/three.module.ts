@@ -7,10 +7,13 @@ import { SceneComponent } from './scene.component';
 
 import { PerspectiveCameraComponent } from './cameras/perspective-camera.component';
 import { PointLightComponent } from './lights/point-light.component';
+
 import { VRControlsComponent } from './controls/vr.component';
 import { OrbitControlsComponent } from './controls/orbit.component';
+
 import { SphereComponent } from './objects/sphere.component';
 import { TextureComponent } from './objects/texture.component';
+import { SkyboxComponent } from './objects/skybox.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { TextureComponent } from './objects/texture.component';
     SphereComponent,
     VRControlsComponent,
     TextureComponent,
+    SkyboxComponent,
     OrbitControlsComponent
   ],
   imports: [BrowserModule],
