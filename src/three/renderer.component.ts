@@ -40,7 +40,10 @@ export class RendererComponent {
 
     if(changes.isVRMode && changes.isVRMode.currentValue) {
       if(!this.isFullScreen) this.isFullScreen = true;
-      if(this.vrComponent) this.vrComponent.requestVR(this.renderer.domElement);
+
+      if(this.vrComponent) {
+        this.vrComponent.requestVR(this.renderer.domElement);
+      }
     }
   }
 

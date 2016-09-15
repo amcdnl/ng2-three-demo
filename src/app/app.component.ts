@@ -70,7 +70,7 @@ export class AppComponent {
   image: any;
   audioData: any;
   isFullScreen: boolean = false;
-  isVRMode: boolean = false;
+  isVRMode: boolean = true;
   feedback: string = '';
 
   constructor(private voiceSvc: VoiceService, private musicSvc: MusicService) {
@@ -83,6 +83,7 @@ export class AppComponent {
       this.feedback = `Playing "${track.name}" by ${track.artist}`;
       this.audioData = audio;
       this.image = track.album;
+      this.voiceSvc.annyang.abort();
     });
   }
 

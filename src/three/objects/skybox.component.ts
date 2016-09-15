@@ -25,7 +25,7 @@ export class SkyboxComponent {
   		let loader = new THREE.ImageLoader(this.manager);
 
   		this.objects.push(material);
-  		loader.load(`src/three/${asset}`, this.createTexture(texture, material));
+  		loader.load(`${asset}`, this.createTexture(texture, material));
   	}
 
     this.manager.onProgress = (item, loaded, total) => { };

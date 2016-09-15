@@ -30,7 +30,7 @@ export class MusicService {
     req.onreadystatechange = () => {
       if(req.readyState === XMLHttpRequest.DONE && req.status === 200) {
         this.stop();
-        
+
         const response = JSON.parse(req.responseText);
         if (response.tracks.items.length) {
           const track = response.tracks.items[0];
@@ -41,6 +41,11 @@ export class MusicService {
   }
 
   play(track) {
+    // stupid...
+    this.audio.pause();
+    this.audio.currentTime = 0;
+
+    // setup new play
     this.audio.src = track.preview_url;
     this.audio.crossOrigin = 'anonymous';
     this.audio.play();

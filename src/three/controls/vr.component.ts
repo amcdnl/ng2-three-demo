@@ -10,6 +10,7 @@ export class VRControlsComponent {
 
   @Input() height: number;
   @Input() width: number;
+  @Input() enabled: boolean = true;
 
   vrDisplay: any;
   controls: THREE.VRControls;
@@ -32,14 +33,18 @@ export class VRControlsComponent {
   }
 
   setupControls(camera, renderer) {
-    this.controls = new THREE.VRControls(camera);
-    this.effect = new THREE.VREffect(renderer);
-    this.setEffectSize(this.width, this.height);
+    if(this.enabled) {
+      this.controls = new THREE.VRControls(camera);
+      this.effect = new THREE.VREffect(renderer);
+      this.setEffectSize(this.width, this.height);
+    }
   }
 
   updateControls(scene, camera) {
-    this.controls.update();
-    this.effect.render(scene, camera);
+    if(this.controls && this.effect) {
+      this.controls.update();
+      this.effect.render(scene, camera);
+    }
   }
 
   setEffectSize(width, height) {
@@ -49,13 +54,17 @@ export class VRControlsComponent {
   }
 
   requestVR(dom) {
-    this.vrDisplay.requestPresent([{
-      source: dom
-    }]);
+    if(this.vrDisplay) {
+      this.vrDisplay.requestPresent([{
+        source: dom
+      }]);
+    }
   }
 
   resetVR() {
-    this.vrDisplay.resetPose();
+    if(this.vrDisplay) {
+      this.vrDisplay.resetPose();
+    }
   }
 
 }

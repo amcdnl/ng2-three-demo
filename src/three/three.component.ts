@@ -9,11 +9,12 @@ import { Input, Component, HostListener } from '@angular/core';
       [height]="height"
       [width]="width">
 
-      <three-orbit-controls>
+      <three-orbit-controls
+        [enabled]="!isVRMode">
       </three-orbit-controls>
 
       <three-vr-controls
-        *ngIf="isVRMode"
+        [enabled]="isVRMode"
         [height]="height"
         [width]="width">
       </three-vr-controls>
@@ -40,12 +41,12 @@ import { Input, Component, HostListener } from '@angular/core';
 export class ThreeComponent {
 
   @Input() ngModel: any;
-  @Input() image: any = 'https://i.scdn.co/image/7199df74bb15de17f72704c79d482851c0cf4c38';
+  @Input() image: any; // = 'https://i.scdn.co/image/7199df74bb15de17f72704c79d482851c0cf4c38';
 
   @Input() height: number;
   @Input() width: number;
   @Input() isFullScreen: boolean = false;
-  @Input() isVRMode: boolean = false;
+  @Input() isVRMode: boolean = true;
 
   ngOnInit() {
     this.resetWidthHeight();

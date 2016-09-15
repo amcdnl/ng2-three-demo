@@ -58,11 +58,7 @@ nav {
   z-index: 999;
 }
 
-main {
-  three,
-  three-renderer {
-    display: block;
-    height: 100vh;
-    width: 100%;
-  }
+canvas {
+  position: fixed;
+  top: 0;
 }

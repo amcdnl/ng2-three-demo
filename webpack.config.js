@@ -4,6 +4,8 @@ var webpack = require('webpack');
 var WebpackNotifierPlugin = require('webpack-notifier');
 var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var chalk = require('chalk');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var ENV = process.env.NODE_ENV;
 var IS_PRODUCTION = ENV === 'production';
@@ -16,7 +18,7 @@ function root(args) {
 
 function webpackConfig(options = {}) {
 
-  return {
+  var config = {
     context: root(),
     debug: true,
     devtool: 'cheap-module-eval-source-map',
@@ -103,6 +105,11 @@ function webpackConfig(options = {}) {
         minChunks: Infinity
       }),
 
+      new CopyWebpackPlugin([{
+        from: 'src/three/assets',
+        to: 'assets'
+      }]),
+
       new webpack.DefinePlugin({
         'ENV': JSON.stringify(ENV),
         'HMR': options.HMR,
@@ -129,6 +136,15 @@ function webpackConfig(options = {}) {
       resourcePath: 'src'
     }
   };
+
+  if(ENV === 'production') {
+    config.plugins.push(new HtmlWebpackPlugin({
+      template: './index.html',
+      inject: false
+    }));
+  }
+
+  return config;
 
 };
 
