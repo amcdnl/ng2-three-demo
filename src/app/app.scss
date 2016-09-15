@@ -1,0 +1,64 @@
+body {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-weight: 100;
+  overflow: hidden;
+  font-size: 0.7em;
+  font-family: 'Open Sans';
+}
+
+button {
+  display: inline-block;
+  padding: .5em .8em;
+  margin: .2em;
+  background: none;
+  color: #fff;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+header {
+  background: rgba(22, 42, 60, 0.71);
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  position: absolute;
+  top: 20px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  z-index: 999;
+  border-radius: 5px;
+  text-align: center;
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 100;
+    white-space: nowrap;
+
+    small {
+      color: #999;
+      font-size: 11px;
+      font-style: italic;
+    }
+  }
+}
+
+nav {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+}

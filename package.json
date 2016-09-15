@@ -1,0 +1,69 @@
+{
+  "name": "ng2-boiler",
+  "version": "1.0.0",
+  "description": "Angular2 + Webpack Starter Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "start:server": "webpack-dev-server --host 10.0.0.168",
+    "start:hmr": "webpack-dev-server --env.HMR",
+    "build": "webpack --display-error-details",
+    "deploy": "gh-pages -d ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amcdnl/ng2-boiler.git"
+  },
+  "keywords": [
+    "angular2",
+    "webpack",
+    "typescript"
+  ],
+  "author": "Austin McDaniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amcdnl/ng2-boiler/issues"
+  },
+  "homepage": "https://github.com/amcdnl/ng2-boiler#readme",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.7",
+    "@angular/compiler": "2.0.0-rc.7",
+    "@angular/core": "2.0.0-rc.7",
+    "@angular/platform-browser": "2.0.0-rc.7",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.7",
+    "annyang": "^2.5.0",
+    "core-js": "^2.4.0",
+    "glslify-loader": "^1.0.2",
+    "raw-loader": "^0.5.1",
+    "rxjs": "5.0.0-beta.12",
+    "three": "^0.80.1",
+    "webvr-polyfill": "^0.9.18",
+    "zone.js": "0.6.21"
+  },
+  "devDependencies": {
+    "@angularclass/hmr": "^1.0.1",
+    "@angularclass/hmr-loader": "^1.0.1",
+    "@types/core-js": "^0.9.28",
+    "@types/node": "^6.0.31",
+    "@types/three": "0.0.21",
+    "autoprefixer": "^6.3.7",
+    "awesome-typescript-loader": "^2.2.1",
+    "chalk": "^1.1.3",
+    "css-loader": "^0.24.0",
+    "gh-pages": "^0.11.0",
+    "html-webpack-plugin": "^2.22.0",
+    "node-sass": "^3.7.0",
+    "postcss": "^5.1.1",
+    "progress-bar-webpack-plugin": "^1.9.0",
+    "sass-loader": "^4.0.1",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "0.13.1",
+    "ts-helpers": "1.1.1",
+    "tslint": "3.15.1",
+    "tslint-loader": "^2.1.5",
+    "typescript": "2.0.0",
+    "webpack": "2.1.0-beta.22",
+    "webpack-dev-server": "2.1.0-beta.3",
+    "webpack-notifier": "^1.4.0"
+  }
+}
