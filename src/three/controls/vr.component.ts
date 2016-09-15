@@ -1,9 +1,9 @@
 import { Directive, Input } from '@angular/core';
 
 import * as THREE from 'three';
+import 'webvr-polyfill';
 import 'three/examples/js/controls/VRControls.js';
 import 'three/examples/js/effects/VREffect.js';
-import 'webvr-polyfill';
 
 @Directive({ selector: 'three-vr-controls' })
 export class VRControlsComponent {
@@ -12,17 +12,8 @@ export class VRControlsComponent {
   @Input() width: number;
   @Input() enabled: boolean = true;
 
-  vrDisplay: any;
-  controls: THREE.VRControls;
-  effect: THREE.VREffect;
-
-  constructor() {
-    navigator.getVRDisplays().then((displays) => {
-      if (displays.length) {
-        this.vrDisplay = displays[0];
-      }
-    });
-  }
+  controls: any;
+  effect: any;
 
   ngOnChanges(changes) {
     const widthChng = changes.width && changes.width.currentValue;
@@ -54,16 +45,14 @@ export class VRControlsComponent {
   }
 
   requestVR(dom) {
-    if(this.vrDisplay) {
-      this.vrDisplay.requestPresent([{
-        source: dom
-      }]);
+    if(this.effect) {
+      this.effect.requestPresent();
     }
   }
 
   resetVR() {
-    if(this.vrDisplay) {
-      this.vrDisplay.resetPose();
+    if(this.controls) {
+      this.controls.resetPose();
     }
   }
 
