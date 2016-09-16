@@ -40,7 +40,6 @@ import './app.scss';
         </button>
         <button
           type="button"
-          [disabled]="!supportsVR"
           (click)="isVRMode = !isVRMode">
           VR Mode
         </button>
