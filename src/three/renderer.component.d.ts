@@ -7,7 +7,6 @@ export declare class RendererComponent {
     private element;
     height: number;
     width: number;
-    isFullScreen: boolean;
     isVRMode: boolean;
     sceneComp: SceneComponent;
     vrComponent: VRControlsComponent;

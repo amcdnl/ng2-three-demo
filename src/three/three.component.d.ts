@@ -3,7 +3,6 @@ export declare class ThreeComponent {
     image: any;
     height: number;
     width: number;
-    isFullScreen: boolean;
     isVRMode: boolean;
     ngOnInit(): void;
     ngOnChanges(changes: any): void;

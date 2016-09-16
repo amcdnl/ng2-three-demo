@@ -1,9 +1,11 @@
+import { ElementRef } from '@angular/core';
 import { VoiceService } from './services/voice.service';
 import { MusicService } from './services/music.service';
 import './app.scss';
 export declare class AppComponent {
     private voiceSvc;
     private musicSvc;
+    private element;
     image: any;
     audioData: any;
     isFullScreen: boolean;
@@ -11,5 +13,6 @@ export declare class AppComponent {
     feedback: string;
     supportsVR: boolean;
     getVRSupport(): void;
-    constructor(voiceSvc: VoiceService, musicSvc: MusicService);
+    constructor(voiceSvc: VoiceService, musicSvc: MusicService, element: ElementRef);
+    toggleFullScreen(changes: any): void;
 }
