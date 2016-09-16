@@ -20,6 +20,11 @@ button {
   &:focus {
     outline: none;
   }
+
+  &[disabled] {
+    opacity: .3;
+    cursor: not-allowed;
+  }
 }
 
 header {

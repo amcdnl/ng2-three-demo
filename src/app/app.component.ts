@@ -40,6 +40,7 @@ import './app.scss';
         </button>
         <button
           type="button"
+          [disabled]="!supportsVR"
           (click)="isVRMode = !isVRMode">
           VR Mode
         </button>
@@ -72,8 +73,26 @@ export class AppComponent {
   isFullScreen: boolean = false;
   isVRMode: boolean = true;
   feedback: string = '';
+  supportsVR: boolean = false;
+
+  getVRSupport(): void {
+    if(navigator.getVRDisplays === undefined || navigator.getVRDevices === undefined) {
+      this.supportsVR = false;
+      this.isVRMode = false;
+      return;
+    }
+
+    navigator.getVRDisplays().then((displays) => {
+      if(displays.length) {
+        this.supportsVR = true;
+        this.isVRMode = true;
+      }
+    });
+  }
 
   constructor(private voiceSvc: VoiceService, private musicSvc: MusicService) {
+    this.getVRSupport();
+
     this.voiceSvc.onCommand.subscribe((event) => {
       if(event.type === 'play') this.musicSvc.search(event.value);
       if(event.type === 'stop') this.musicSvc.stop();

@@ -27,12 +27,10 @@ import { Input, Component, HostListener } from '@angular/core';
         </three-perspective-camera>
 
         <three-point-light></three-point-light>
-        <three-sphere></three-sphere>
-        <three-skybox></three-skybox>
 
-        <three-texture
-          [texture]="image">
-        </three-texture>
+        <three-sphere></three-sphere>
+
+        <three-skybox></three-skybox>
 
       </three-scene>
     </three-renderer>
@@ -41,7 +39,7 @@ import { Input, Component, HostListener } from '@angular/core';
 export class ThreeComponent {
 
   @Input() ngModel: any;
-  @Input() image: any; // = 'https://i.scdn.co/image/7199df74bb15de17f72704c79d482851c0cf4c38';
+  @Input() image: any;
 
   @Input() height: number;
   @Input() width: number;
@@ -54,15 +52,16 @@ export class ThreeComponent {
 
   ngOnChanges(changes) {
     if(changes.ngModel && changes.ngModel.currentValue) {
-      console.log('changes', changes)
+      console.log('changes', changes);
     }
   }
 
-  @HostListener('window.resize')
-  @HostListener('window.vrdisplaypresentchange')
+  @HostListener('window:resize')
+  @HostListener('window:vrdisplaypresentchange')
   resetWidthHeight() {
     this.height = window.innerHeight;
     this.width = window.innerWidth;
+    console.log('window resize', this.height, this.width);
   }
 
 }

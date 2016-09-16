@@ -8,7 +8,7 @@ export class SphereComponent {
 
   ngOnInit() {
     // Create sphere
-    let geometry = new THREE.SphereGeometry(0.4, 32, 32);
+    let geometry = new THREE.SphereGeometry(3, 250, 250);
     let material = new THREE.MeshNormalMaterial();
     let sphere = new THREE.Mesh(geometry, material);
 

@@ -18,6 +18,7 @@ interface ErrorConstructor extends ErrorStackTraceLimit {}
 
 interface VRNavigator {
   getVRDisplays: any;
+  getVRDevices: any;
 }
 
 interface Navigator extends VRNavigator {}
