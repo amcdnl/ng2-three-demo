@@ -4,14 +4,12 @@ import * as THREE from 'three';
 import { SceneComponent } from './scene.component';
 import { VRControlsComponent } from './controls/vr.component';
 import { OrbitControlsComponent } from './controls/orbit.component';
-import { requestFullScreen } from './utils/fullscreen';
 
 @Directive({ selector: 'three-renderer' })
 export class RendererComponent {
 
   @Input() height: number;
   @Input() width: number;
-  @Input() isFullScreen: boolean = false;
   @Input() isVRMode: boolean = false;
 
   @ContentChild(SceneComponent) sceneComp: SceneComponent;
@@ -34,16 +32,21 @@ export class RendererComponent {
   }
 
   ngOnChanges(changes) {
-    if(changes.isFullScreen && changes.isFullScreen.currentValue) {
-      requestFullScreen(this.renderer.domElement);
-    }
-
     if(changes.isVRMode && changes.isVRMode.currentValue) {
-      if(!this.isFullScreen) this.isFullScreen = true;
-
       if(this.vrComponent) {
+        if(!this.vrComponent.controls) {
+          this.vrComponent.enabled = true;
+          this.vrComponent.setupControls(this.camera, this.renderer);
+        }
+
         this.vrComponent.requestVR(this.renderer.domElement);
       }
+    }
+
+    const widthChng = changes.width && changes.width.currentValue;
+    const heightChng = changes.height && changes.height.currentValue;
+    if(widthChng || heightChng) {
+      this.renderer.setSize(this.width, this.height);
     }
   }
 

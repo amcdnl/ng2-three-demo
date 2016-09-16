@@ -4,7 +4,6 @@ import { Input, Component, HostListener } from '@angular/core';
   selector: 'three',
   template: `
     <three-renderer
-      [isFullScreen]="isFullScreen"
       [isVRMode]="isVRMode"
       [height]="height"
       [width]="width">
@@ -43,7 +42,6 @@ export class ThreeComponent {
 
   @Input() height: number;
   @Input() width: number;
-  @Input() isFullScreen: boolean = false;
   @Input() isVRMode: boolean = true;
 
   ngOnInit() {
