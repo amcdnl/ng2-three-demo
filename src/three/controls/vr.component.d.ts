@@ -1,15 +1,12 @@
-import * as THREE from 'three';
+import 'webvr-polyfill';
 import 'three/examples/js/controls/VRControls.js';
 import 'three/examples/js/effects/VREffect.js';
-import 'webvr-polyfill';
 export declare class VRControlsComponent {
     height: number;
     width: number;
     enabled: boolean;
-    vrDisplay: any;
-    controls: THREE.VRControls;
-    effect: THREE.VREffect;
-    constructor();
+    controls: any;
+    effect: any;
     ngOnChanges(changes: any): void;
     setupControls(camera: any, renderer: any): void;
     updateControls(scene: any, camera: any): void;

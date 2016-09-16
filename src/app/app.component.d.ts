@@ -9,5 +9,7 @@ export declare class AppComponent {
     isFullScreen: boolean;
     isVRMode: boolean;
     feedback: string;
+    supportsVR: boolean;
+    getVRSupport(): void;
     constructor(voiceSvc: VoiceService, musicSvc: MusicService);
 }
